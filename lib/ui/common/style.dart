@@ -18,24 +18,21 @@ class AppListItemDivider extends StatelessWidget {
 
 // textfield decoration
 InputDecoration getAppTextFieldDecoration(
-    {@required String labelText,
+    {String labelText = "",
     String hintText = "",
     @required BuildContext context}) {
   return InputDecoration(
     labelStyle: Theme.of(context).textTheme.bodyText1,
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(25),
-      borderSide: BorderSide(color: Colors.blue, width: 1.0),
+      borderSide: const BorderSide(color: Colors.blue, width: 1.0),
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(25),
-      borderSide: BorderSide(color: Colors.blue, width: 1.0),
+      borderSide: const BorderSide(color: Colors.blue, width: 1.0),
     ),
     filled: true,
-    contentPadding: EdgeInsets.only(left: 25, bottom: 20),
-    //border: OutlineInputBorder(
-    //    borderRadius: BorderRadius.circular(25),
-    //    borderSide: new BorderSide(color: Colors.blue)),
+    contentPadding: const EdgeInsets.only(left: 25, bottom: 20),
     labelText: labelText,
     hintText: hintText,
   );
