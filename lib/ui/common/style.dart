@@ -24,15 +24,15 @@ InputDecoration getAppTextFieldDecoration(
   return InputDecoration(
     labelStyle: Theme.of(context).textTheme.bodyText1,
     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(25),
+      borderRadius: BorderRadius.circular(5),
       borderSide: const BorderSide(color: Colors.blue, width: 1.0),
     ),
     focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(25),
+      borderRadius: BorderRadius.circular(5),
       borderSide: const BorderSide(color: Colors.blue, width: 1.0),
     ),
     filled: true,
-    contentPadding: const EdgeInsets.only(left: 25, bottom: 20),
+    contentPadding: const EdgeInsets.all(10),
     labelText: labelText,
     hintText: hintText,
   );

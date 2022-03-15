@@ -5,6 +5,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dicta_notes/models/note.dart';
 import 'package:dicta_notes/ui/common/animations.dart';
 import 'package:dicta_notes/ui/common/style.dart';
+import 'package:dicta_notes/ui/common/widgets/add_category_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
@@ -16,7 +17,11 @@ class MainScreen extends StatelessWidget {
     log("MainScreen build()", name: "screenLog");
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Uncategorised notes"),
+        title: Text("Uncategorised notes",
+            style: Theme.of(context)
+                .textTheme
+                .headline1
+                .copyWith(color: Colors.white)),
       ),
       body: Padding(
         padding: const EdgeInsets.all(5.0),
@@ -29,7 +34,11 @@ class MainScreen extends StatelessWidget {
           openDialog(context, const _AddNoteDialog())
         },
         icon: const Icon(Icons.mic),
-        label: const Text("Add note"),
+        label: Text("Add note",
+            style: Theme.of(context)
+                .textTheme
+                .headline3
+                .copyWith(color: Colors.white)),
       ),
     );
   }
@@ -121,7 +130,7 @@ class _AddNoteDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log("_AddNoteDialogbuild()", name: "screenLog");
+    log("_AddNoteDialog build()", name: "screenLog");
     return Material(
         type: MaterialType.transparency,
         // make sure that the overlay content is not cut off
@@ -142,8 +151,11 @@ class _AddNoteDialog extends StatelessWidget {
                                 },
                                 icon: const Icon(Icons.arrow_back)),
                             const Spacer(),
+                            Text("New note",
+                                style: Theme.of(context).textTheme.headline2),
+                            const Spacer(),
                             const FloatingActionButton(
-                              child: Icon(Icons.done),
+                              child: Icon(Icons.save),
                               backgroundColor: Colors.green,
                               // onPressed: () {
                               //  //TODO implement save note
@@ -175,7 +187,7 @@ class _AddNoteDialog extends StatelessWidget {
         //TODO implement voice record
       },
       child: Container(
-        width: 100,
+        width: 120,
         decoration: const BoxDecoration(
           color: Colors.green,
           borderRadius: BorderRadius.all(
@@ -220,7 +232,13 @@ class _AddNoteDialog extends StatelessWidget {
                   AudioWaveBar(height: 20, color: Colors.black),
                 ],
               )
-            : const SizedBox(height: 50, width: 100, child: Icon(Icons.mic)),
+            : const SizedBox(
+                height: 50,
+                width: 100,
+                child: Icon(
+                  Icons.mic,
+                  color: Colors.white,
+                )),
       ),
     );
   }
@@ -231,7 +249,7 @@ class _CategorizeNoteDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log("_CategorizeNoteDialog()", name: "screenLog");
+    log("_CategorizeNoteDialog() build()", name: "screenLog");
     return Material(
         type: MaterialType.transparency,
         // make sure that the overlay content is not cut off
@@ -252,8 +270,11 @@ class _CategorizeNoteDialog extends StatelessWidget {
                                 },
                                 icon: const Icon(Icons.arrow_back)),
                             const Spacer(),
+                            Text("Categorization",
+                                style: Theme.of(context).textTheme.headline2),
+                            const Spacer(),
                             const FloatingActionButton(
-                              child: Icon(Icons.done),
+                              child: Icon(Icons.save),
                               backgroundColor: Colors.green,
                               // onPressed: () {
                               //  //TODO implement save note
@@ -262,7 +283,7 @@ class _CategorizeNoteDialog extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(
-                          height: 25,
+                          height: 20,
                         ),
                         //Text("asd"),
                         TextField(
@@ -271,7 +292,7 @@ class _CategorizeNoteDialog extends StatelessWidget {
                             keyboardType: TextInputType.multiline,
                             maxLines: 1),
                         const SizedBox(
-                          height: 5,
+                          height: 10,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -316,7 +337,7 @@ class _CategorizeNoteDialog extends StatelessWidget {
                             ),
                             InkWell(
                               onTap: () {
-                                // addCategoryDialog(context);
+                                openAddCategoryDialog(context);
                               },
                               child: const Icon(
                                 Icons.add_rounded,
@@ -327,7 +348,7 @@ class _CategorizeNoteDialog extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(
-                          height: 5,
+                          height: 10,
                         ),
                         TextField(
                             decoration:

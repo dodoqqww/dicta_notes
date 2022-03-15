@@ -11,7 +11,7 @@ import 'screens/main_screen.dart';
 class BottomNavigation extends StatelessWidget {
   final currentTab = [
     const MainScreen(),
-    const CategoriesScreen(),
+    CategoriesScreen(),
     const SettingsScreen(),
   ];
 
